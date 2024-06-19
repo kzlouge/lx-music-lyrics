@@ -29,11 +29,14 @@ LX Music 开启[API服务](https://lxmusic.toside.cn/desktop/open-api)后，提�
 
 3. `http://127.0.0.1:23330/subscribe-player-status` SSE事件流接口, 接受一个普通的 HTTP GET 请求，只是请求会保持长链接状态，播放器的状态在变更时通过文本事件流的形式将其实时返回
 
+
+
+
 这里选择使用SSE接口获取歌词，避免通过轮询的方式重复调用状态接口查询歌词。但为了检测软件运行和连接中断后重连，仍然是重复调用SSE接口，或许有更好的解决方法。
 
 
 
-QML 前端集成了 JavaScript，在 JavaScript 中 SSE 连接是通过 EventSource 进行的。但 QML 并没有实现 EventSource, 好在 QML 实现了 XMLHttpRequest，而 SSE 基于 HTTP 协议，可以由 XMLHttpRequest 实现。
+KDE Plasma 的插件使用 QML 开发前端（[相关教程](https://develop.kde.org/docs/plasma/widget/)，QML 集成了 JavaScript，在 JavaScript 中 SSE 连接是通过 EventSource 进行的。但 QML 并没有实现 EventSource, 好在 QML 实现了 XMLHttpRequest，而 SSE 基于 HTTP 协议，可以由 XMLHttpRequest 实现。
 
 插件通过接口实时更新数据后，从数据中提取歌词并更新在面板上，在连接断开后每5秒尝试重新连接。
 
