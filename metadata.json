@@ -14,7 +14,7 @@
     "License": "MIT",
     "Name": "lx-music-lyric",
     "Version": "0.1.0",
-    "Website": ""
+    "Website": "https://github.com/kzlouge/org.kde.plasma.lx-music-lyrics"
   },
   "X-Plasma-API-Minimum-Version": "6.0"
 }
