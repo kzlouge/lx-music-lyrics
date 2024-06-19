@@ -16,11 +16,11 @@ LX Music 从 v2.7.0 起支持开放 [API服务](https://lxmusic.toside.cn/deskto
 
 LX Music 开启[API服务](https://lxmusic.toside.cn/desktop/open-api)后，提供三个接口获取歌曲信息：
 
-`http://127.0.0.1:23330/status` 用于获取播放器状态
+1. `http://127.0.0.1:23330/status` 用于获取播放器状态
 
-`http://127.0.0.1:23330/lyric` 用于获取歌词
+2. `http://127.0.0.1:23330/lyric` 用于获取歌词
 
-`http://127.0.0.1:23330/subscribe-player-status` SSE事件流接口, 接受一个普通的 HTTP GET 请求，只是请求会保持长链接状态，播放器的状态在变更时通过文本事件流的形式将其实时返回
+3. `http://127.0.0.1:23330/subscribe-player-status` SSE事件流接口, 接受一个普通的 HTTP GET 请求，只是请求会保持长链接状态，播放器的状态在变更时通过文本事件流的形式将其实时返回
 
 这里选择使用SSE接口获取歌词，避免通过轮询的方式重复调用状态接口。
 
