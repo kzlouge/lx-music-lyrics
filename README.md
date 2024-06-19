@@ -4,6 +4,8 @@ Display LX Music lyrics on the KDE plasma panel.      
 在 KDE plasma 面板上显示 LX Music 的歌词。 
 
 ## 效果
+![image text](https://github.com/kzlouge/lx-music-lyrics/blob/main/lx-music-lyrics-example.png)  
+
 
 
 ## 前言
