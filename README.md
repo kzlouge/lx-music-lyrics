@@ -4,7 +4,7 @@ Display LX Music lyrics on the KDE plasma panel.      
 在 KDE plasma 面板上显示 LX Music 的歌词。 
 
 ## 效果
-![image text](https://github.com/kzlouge/lx-music-lyrics/blob/main/lx-music-lyrics-example.png)  
+![image text](https://github.com/kzlouge/org.kde.plasma.lx-music-lyrics/blob/main/lx-music-lyrics-example.png)  
 
 
 
@@ -40,6 +40,6 @@ QML 前端集成了 JavaScript，在 JavaScript 中 SSE 连接是通过 EventSou
 下载得到代码后，复制到 KDE Plasma 用于存放插件的文件夹中：
 
 ```shell
-git clone https://github.com/kzlouge/lx-music-lyrics
-cp -r lx-music-lyrics ~/.local/share/plasma/plasmoids/org.kde.plasma.lx-music-lyrics
+git clone https://github.com/kzlouge/org.kde.plasma.lx-music-lyrics
+cp -r org.kde.plasma.lx-music-lyrics ~/.local/share/plasma/plasmoids/org.kde.plasma.lx-music-lyrics
 ```
