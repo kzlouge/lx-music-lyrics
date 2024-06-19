@@ -46,7 +46,7 @@ KDE Plasma 的插件使用 QML 开发前端（[相关教程](https://develop.kde
 
 ```shell
 git clone https://github.com/kzlouge/org.kde.plasma.lx-music-lyrics
-mv -r org.kde.plasma.lx-music-lyrics ~/.local/share/plasma/plasmoids/org.kde.plasma.lx-music-lyrics
+mv org.kde.plasma.lx-music-lyrics ~/.local/share/plasma/plasmoids/org.kde.plasma.lx-music-lyrics
 ```
 或者在 KDE Store 中下载： https://store.kde.org/p/2166807
 
