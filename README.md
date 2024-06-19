@@ -45,4 +45,4 @@ cp -r org.kde.plasma.lx-music-lyrics ~/.local/share/plasma/plasmoids/org.kde.pla
 ```
 或者在 KDE Store 中下载： https://store.kde.org/p/2166807
 
-注意在 LX Music `设置-开放API` 中勾选`启用开放API服务`选项，并确认服务端口为`23330`。 
+注意在 LX Music `设置-开放API` 中勾选 `启用开放API服务` 选项，并确认服务端口为 `23330` 。 
