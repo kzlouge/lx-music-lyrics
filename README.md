@@ -36,7 +36,7 @@ LX Music 开启[API服务](https://lxmusic.toside.cn/desktop/open-api)后，提�
 
 
 
-KDE Plasma 的插件使用 QML 开发前端（[相关教程](https://develop.kde.org/docs/plasma/widget/)，QML 集成了 JavaScript，在 JavaScript 中 SSE 连接是通过 EventSource 进行的。但 QML 并没有实现 EventSource, 好在 QML 实现了 XMLHttpRequest，而 SSE 基于 HTTP 协议，可以由 XMLHttpRequest 实现。
+KDE Plasma 的插件使用 QML 开发前端（[相关教程](https://develop.kde.org/docs/plasma/widget/))，QML 集成了 JavaScript，在 JavaScript 中 SSE 连接是通过 EventSource 进行的。但 QML 并没有实现 EventSource, 好在 QML 实现了 XMLHttpRequest，而 SSE 基于 HTTP 协议，可以由 XMLHttpRequest 实现。
 
 插件通过接口实时更新数据后，从数据中提取歌词并更新在面板上，在连接断开后每5秒尝试重新连接。
 
