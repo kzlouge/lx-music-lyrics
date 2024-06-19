@@ -42,11 +42,11 @@ KDE Plasma 的插件使用 QML 开发前端（[相关教程](https://develop.kde
 
 ## 安装
 
-下载得到代码后，复制到 KDE Plasma 用于存放插件的文件夹中：
+下载得到代码后，移动到 KDE Plasma 用于存放插件的文件夹中：
 
 ```shell
 git clone https://github.com/kzlouge/org.kde.plasma.lx-music-lyrics
-cp -r org.kde.plasma.lx-music-lyrics ~/.local/share/plasma/plasmoids/org.kde.plasma.lx-music-lyrics
+mv -r org.kde.plasma.lx-music-lyrics ~/.local/share/plasma/plasmoids/org.kde.plasma.lx-music-lyrics
 ```
 或者在 KDE Store 中下载： https://store.kde.org/p/2166807
 
