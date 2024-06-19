@@ -35,5 +35,4 @@ QML 前端集成了 JavaScript，在 JavaScript 中 SSE 连接是通过 EventSou
 ```shell
 git clone https://github.com/kzlouge/lx-music-lyrics
 cp -r lx-music-lyrics ~/.local/share/plasma/plasmoids/org.kde.plasma.lx-music-lyrics
-``
 ```
