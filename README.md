@@ -8,15 +8,18 @@ YesPlayMusic 在 KDE plasma 上有[插件](https://github.com/zsiothsu/org.kde.p
 但 LX Music 没有相关的插件，之前也没有开放类似的接口。
 LX Music 从 v2.7.0 起支持开放 [API服务](https://lxmusic.toside.cn/desktop/open-api)，启用开放API功能后，将会在本地启动一个http服务，提供接口供第三方软件调用。
 
-因此便有了为 LX Muic 也写一个在 KDE plasma 面板中显示歌词的插件。
+因此便有了为 LX Muic 也写一个在 KDE plasma 面板中显示歌词的插件的想法。
 
 该插件全部由 qml 前端编写，代码量不到 100 行，只能实现最基本的把歌词显示在面板上的功能，后续会添加一些自定义设置。
 
 ## 原理
 
 LX Music 开启[API服务](https://lxmusic.toside.cn/desktop/open-api)后，提供三个接口获取歌曲信息：
+
 `http://127.0.0.1:23330/status` 用于获取播放器状态
+
 `http://127.0.0.1:23330/lyric` 用于获取歌词
+
 `http://127.0.0.1:23330/subscribe-player-status` SSE事件流接口, 接受一个普通的 HTTP GET 请求，只是请求会保持长链接状态，播放器的状态在变更时通过文本事件流的形式将其实时返回
 
 这里选择使用SSE接口获取歌词，避免通过轮询的方式重复调用状态接口。
