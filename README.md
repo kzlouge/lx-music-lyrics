@@ -1,7 +1,10 @@
 # lx-music-lyrics
 Display LX Music lyrics on the KDE plasma panel.      
 
-在 KDE plasma 面板上显示 LX Music 的歌词。
+在 KDE plasma 面板上显示 LX Music 的歌词。 
+
+## 效果
+
 
 ## 前言
 
