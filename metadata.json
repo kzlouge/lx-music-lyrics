@@ -1,0 +1,20 @@
+{
+  "KPackageStructure": "Plasma/Applet",
+  "KPlugin": {
+    "Authors": [
+      {
+        "Email": "kzlouge@proton.me",
+        "Name": "kzlouge"
+      }
+    ],
+    "Category": "Multimedia",
+    "Description": "Display LX Music lyrics on the plasma panel",
+    "Icon": "applications-multimedia",
+    "Id": "org.kde.plasma.lx-music-lyrics",
+    "License": "MIT",
+    "Name": "lx-music-lyric",
+    "Version": "0.1.0",
+    "Website": ""
+  },
+  "X-Plasma-API-Minimum-Version": "6.0"
+}
