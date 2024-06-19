@@ -1,8 +1,6 @@
 # lx-music-lyrics
 Display LX Music lyrics on the KDE plasma panel.
 
-# LX Music lyric
-
 ## 前言
 
 YesPlayMusic 在 KDE plasma 上有[插件](https://github.com/zsiothsu/org.kde.plasma.yesplaymusic-lyrics)可以在面板上显示歌词，听歌的时候歌词不会有遮挡，非常不错。这是通过 YesPlayMusic 的接口获取歌词的。
@@ -32,7 +30,7 @@ QML 前端集成了 JavaScript，在 JavaScript 中 SSE 连接是通过 EventSou
 下载得到代码后，复制到 KDE Plasma 用于存放插件的文件夹中：
 
 ```shell
-git clone https://github.com/
-cp -r org.kde.plasma.lx-music-lyrics ~/.local/share/plasma/plasmoids/org.kde.plasma.lx-music-lyrics
+git clone https://github.com/kzlouge/lx-music-lyrics
+cp -r lx-music-lyrics ~/.local/share/plasma/plasmoids/org.kde.plasma.lx-music-lyrics
 ``
 ```
