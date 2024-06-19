@@ -43,5 +43,4 @@ QML 前端集成了 JavaScript，在 JavaScript 中 SSE 连接是通过 EventSou
 git clone https://github.com/kzlouge/org.kde.plasma.lx-music-lyrics
 cp -r org.kde.plasma.lx-music-lyrics ~/.local/share/plasma/plasmoids/org.kde.plasma.lx-music-lyrics
 ```
-或者在 KDE Store 中下载：
-`https://store.kde.org/p/2166807`
+或者在 KDE Store 中下载： https://store.kde.org/p/2166807
