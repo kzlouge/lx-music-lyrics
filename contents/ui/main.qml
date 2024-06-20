@@ -13,7 +13,7 @@ PlasmoidItem {
         Layout.preferredHeight: lyricsLabel.implicitHeight
         Label {
             id: lyricsLabel
-            text: "Waiting for messages..."
+            text: ""
             anchors.fill: parent
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
@@ -37,6 +37,7 @@ PlasmoidItem {
 
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === XMLHttpRequest.LOADING) {
+                    // TODO: only get data updated instead of the whole data then split it. 
                     // Process the received data
                     var responseText = xhr.responseText;
                     var events = responseText.split("\n\n");
@@ -45,12 +46,18 @@ PlasmoidItem {
                     // -2 instead of -1
                     // as split() may leave an empty string at the end of the array
                     // if the last event hasn't been completely received.
-                    if (events.length > 1) {
+                    // TODO: has fixed the bug not showing the latest lyrics.
+                    if (events[events.length - 1] === "" && events.length > 1) {
                         var lastEvent = events[events.length - 2];
-                        if (lastEvent && lastEvent.startsWith("event: lyricLineText")) {
-                            var data = lastEvent.split("\n")[1].split(": ")[1];
-                            lyricsLabel.text = data.replace(/\"/g, "");
-                        }
+                    } else {
+                        var lastEvent = events[events.length - 1];
+                    }
+
+                    // TODO: display the translation and romanization of the lyrics according
+                    // to the configs, and change the font and color base on the configs.
+                    if (lastEvent && lastEvent.startsWith("event: lyricLineText")) {
+                        var data = lastEvent.split("\n")[1].split(": ")[1];
+                        lyricsLabel.text = data.replace(/\"/g, "");
                     }
                 } else if (xhr.readyState === XMLHttpRequest.DONE) {
                     // Reconnect if the connection is closed
