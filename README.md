@@ -16,7 +16,7 @@ YesPlayMusic 在 KDE plasma 上有[插件](https://github.com/zsiothsu/org.kde.p
 
 LX Music 从 v2.7.0 起支持开放 [API服务](https://lxmusic.toside.cn/desktop/open-api)，启用开放API功能后，将会在本地启动一个http服务，提供接口供第三方软件调用。
 
-因此便打算为 LX Muic 也写一个在 KDE plasma 面板中显示歌词的插件。 
+因此便打算为 LX Music 也写一个在 KDE plasma 面板中显示歌词的插件。 
 
 该插件全部由 qml 前端编写，调用 API 获取歌词后把歌词显示在面板上，用户可以自行设置歌词的字体、颜色和是否显示翻译和罗马音。
 
