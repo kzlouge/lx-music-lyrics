@@ -10,13 +10,13 @@
             <default></default>
         </entry>
         <entry name="firstLanguage" type="Int">
-            <default>1</default>
+            <default>0</default>
         </entry>
         <entry name="secondLanguage" type="Int">
-            <default>0</default>
+            <default>3</default>
         </entry>
         <entry name="thirdLanguage" type="Int">
-            <default>0</default>
+            <default>3</default>
         </entry>
     </group>
 </kcfg>

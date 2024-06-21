@@ -82,17 +82,23 @@ PlasmoidItem {
             //
             // event: lyricLineAllText
             // data: "眠っている間に聞きなさい\n聆听月亮和星星的呢喃\nne mu tte i ru a i da ni ki ki na sa i"
+            //
+            // plasmoid.configuration.[first|second|third]Language
+            // Original: 0
+            // Translation: 1
+            // Romanization: 2
+            // None: 3
             var data = lastEvent.split("\n")[1];
             var allLyrics = data.substring(7, data.length - 1).split("\\n");
             var lyrics = "";
-            if (cfg_lang1 != 0 && allLyrics[cfg_lang1 - 1]) {
-              lyrics = allLyrics[cfg_lang1 - 1] + " "
+            if (allLyrics[cfg_lang1]) {
+              lyrics = allLyrics[cfg_lang1] + " "
             }
-            if (cfg_lang2 != 0 && allLyrics[cfg_lang2 - 1]) {
-              lyrics = lyrics + allLyrics[cfg_lang2 - 1] + " "
+            if (allLyrics[cfg_lang2]) {
+              lyrics = lyrics + allLyrics[cfg_lang2] + " "
             }
-            if (cfg_lang3 != 0 && allLyrics[cfg_lang3 - 1]) {
-              lyrics = lyrics + allLyrics[cfg_lang3 - 1]
+            if (allLyrics[cfg_lang3]) {
+              lyrics = lyrics + allLyrics[cfg_lang3]
             }
             lyricsLabel.text = lyrics.trim();
         }

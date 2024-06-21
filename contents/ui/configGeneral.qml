@@ -1,5 +1,3 @@
-pragma ComponentBehavior: Bound
-
 import QtQuick
 import QtQuick.Controls as QQC2
 import QtQuick.Layouts
@@ -70,7 +68,6 @@ KCM.SimpleKCM {
                   colorChosen = selectedColor
                 }
             }
-
         }
 
         RowLayout {
@@ -80,10 +77,10 @@ KCM.SimpleKCM {
             QQC2.ComboBox {
                 id: firstLanguage
                 model: [
-                  i18n("None"),
                   i18n("Original"),
                   i18n("Translation"),
                   i18n("Romanization"),
+                  i18n("None"),
                 ]
                 onActivated: cfg_firstLanguage = currentIndex
             }
@@ -91,10 +88,10 @@ KCM.SimpleKCM {
             QQC2.ComboBox {
                 id: secondLanguage
                 model: [
-                  i18n("None"),
                   i18n("Original"),
                   i18n("Translation"),
                   i18n("Romanization"),
+                  i18n("None"),
                 ]
                 onActivated: cfg_secondLanguage = currentIndex
             }
@@ -102,10 +99,10 @@ KCM.SimpleKCM {
             QQC2.ComboBox {
                 id: thirdLanguage
                 model: [
-                  i18n("None"),
                   i18n("Original"),
                   i18n("Translation"),
                   i18n("Romanization"),
+                  i18n("None"),
                 ]
                 onActivated: cfg_thirdLanguage = currentIndex
             }
