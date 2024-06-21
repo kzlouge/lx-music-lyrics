@@ -48,8 +48,8 @@ mv org.kde.plasma.lx-music-lyrics ~/.local/share/plasma/plasmoids/org.kde.plasma
 2. 在 KDE Store 中下载： https://store.kde.org/p/2166807
 
 3. 
-  (1). 右键待安装插件的面板，点击`添加挂件`，点击`获取新挂件`，点击`下载新 Plasma 挂件`
-  (2). 在弹出的界面中，搜索`lx-music-lyrics`，并点击安装
+   - 右键待安装插件的面板，点击`添加挂件`，点击`获取新挂件`，点击`下载新 Plasma 挂件`
+   - 在弹出的界面中，搜索`lx-music-lyrics`，并点击安装
 
 ## 运行
 
