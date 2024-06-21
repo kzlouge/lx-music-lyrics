@@ -23,18 +23,13 @@ KCM.SimpleKCM {
         QQC2.Button {
             id: fontButton
             Kirigami.FormData.label: i18n("Font:")
-            text: i18nc("@action:button", "%1pt %2", fontDialog.fontChosen.pointSize, fontDialog.fontChosen.family)
-            onClicked: {
-                fontDialog.selectedFont = fontDialog.fontChosen
-                fontDialog.open()
-            }
+            text: i18n("%1pt %2", fontDialog.fontChosen.pointSize, fontDialog.fontChosen.family)
+            onClicked: fontDialog.open()
         }
 
         QtDialogs.FontDialog {
             id: fontDialog
-            title: i18nc("@title:window", "Choose a Font")
-            modality: Qt.WindowModal
-            parentWindow: generalPage.Window.window
+            title: i18n("Choose a Font")
 
             // create fontChosen other than use selectedFont directly
             // to set cfg_lyricsFont only when accepted the selection.

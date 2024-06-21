@@ -8,6 +8,10 @@ import org.kde.kirigami as Kirigami
 PlasmoidItem {
     id: root
 
+    readonly property int cfg_lang1: Plasmoid.configuration.firstLanguage
+    readonly property int cfg_lang2: Plasmoid.configuration.secondLanguage
+    readonly property int cfg_lang3: Plasmoid.configuration.thirdLanguage
+
     preferredRepresentation: fullRepresentation
     fullRepresentation: Item {
         Layout.preferredWidth: lyricsLabel.implicitWidth
@@ -35,7 +39,7 @@ PlasmoidItem {
 
         function startSSE() {
             var xhr = new XMLHttpRequest();
-            xhr.open("GET", "http://localhost:23330/subscribe-player-status", true);
+            xhr.open("GET", "http://127.0.0.1:23330/subscribe-player-status?filter=lyricLineAllText", true);
             xhr.setRequestHeader("Accept", "text/event-stream");
 
             xhr.onreadystatechange = function() {
@@ -70,26 +74,27 @@ PlasmoidItem {
 
         function displayLirics(lastEvent) {
             // API example
-            // event: status
-            // data: "playing"
-            // 
-            // event: name
-            // data: "交换余生"
-            // 
-            // event: singer
-            // data: "林俊杰"
-            // 
-            // event: albumName
-            // data: "幸存者 Drifter"
-
-            // event: lyricLineText
-            // data: "lyric line text"
-            // TODO: display the translation and romanization of the lyrics according
-            // to the configs, and change the font and color base on the configs.
-            if (lastEvent && lastEvent.startsWith("event: lyricLineText")) {
-                var data = lastEvent.split("\n")[1];
-                lyricsLabel.text = data.substring(7, data.length - 1);
+            // event: lyricLineAllText
+            // data: "可愛い子可愛い子\n可爱的孩子啊\nka wa i i ko ka wa i i ko"
+            //
+            // event: lyricLineAllText
+            // data: "月や星の言葉を\n安眠的时候\ntsu ki ya ho shi no ko to ba wo"
+            //
+            // event: lyricLineAllText
+            // data: "眠っている間に聞きなさい\n聆听月亮和星星的呢喃\nne mu tte i ru a i da ni ki ki na sa i"
+            var data = lastEvent.split("\n")[1];
+            var allLyrics = data.substring(7, data.length - 1).split("\\n");
+            var lyrics = "";
+            if (cfg_lang1 != 0 && allLyrics[cfg_lang1 - 1]) {
+              lyrics = allLyrics[cfg_lang1 - 1] + " "
             }
+            if (cfg_lang2 != 0 && allLyrics[cfg_lang2 - 1]) {
+              lyrics = lyrics + allLyrics[cfg_lang2 - 1] + " "
+            }
+            if (cfg_lang3 != 0 && allLyrics[cfg_lang3 - 1]) {
+              lyrics = lyrics + allLyrics[cfg_lang3 - 1]
+            }
+            lyricsLabel.text = lyrics.trim();
         }
     }
 }
