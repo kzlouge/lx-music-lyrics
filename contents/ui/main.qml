@@ -39,7 +39,8 @@ PlasmoidItem {
 
         function startSSE() {
             var xhr = new XMLHttpRequest();
-            xhr.open("GET", "http://127.0.0.1:23330/subscribe-player-status?filter=lyricLineAllText", true);
+            // Filter SSE output into lyrics and lyric names, the latter is output when switching songs
+            xhr.open("GET", "http://127.0.0.1:23330/subscribe-player-status?filter=lyricLineAllText,name", true);
             xhr.setRequestHeader("Accept", "text/event-stream");
 
             xhr.onreadystatechange = function() {
@@ -57,7 +58,13 @@ PlasmoidItem {
                         var lastEvent = events[events.length - 1];
                     }
 
-                    displayLirics(lastEvent);
+                    // Check if songs switched
+                    // to avoid the bug displaying lyrics of last song when switching to pure songs
+                    if (lastEvent.startsWith("event: name")) {
+                        lyricsLabel.text = "";
+                    } else {
+                        displayLirics(lastEvent);
+                    }
                 } else if (xhr.readyState === XMLHttpRequest.DONE) {
                     // Reconnect if the connection is closed
                     reconnectTimer.start();
