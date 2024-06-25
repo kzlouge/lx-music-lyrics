@@ -11,6 +11,7 @@ PlasmoidItem {
     readonly property int cfg_lang1: Plasmoid.configuration.firstLanguage
     readonly property int cfg_lang2: Plasmoid.configuration.secondLanguage
     readonly property int cfg_lang3: Plasmoid.configuration.thirdLanguage
+    property int lastProcessedIndex: 0
 
     preferredRepresentation: fullRepresentation
     fullRepresentation: Item {
@@ -45,26 +46,7 @@ PlasmoidItem {
 
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === XMLHttpRequest.LOADING) {
-                    // TODO: only get data updated instead of the whole data then split it. 
-                    // Process the received data
-                    var responseText = xhr.responseText;
-                    var events = responseText.split("\n\n");
-
-                    // Parse the last event
-                    // check if the last event hasn't been completely received.
-                    if (events[events.length - 1] === "" && events.length > 1) {
-                        var lastEvent = events[events.length - 2];
-                    } else {
-                        var lastEvent = events[events.length - 1];
-                    }
-
-                    // Check if songs switched
-                    // to avoid the bug displaying lyrics of last song when switching to pure songs
-                    if (lastEvent.startsWith("event: name")) {
-                        lyricsLabel.text = "";
-                    } else {
-                        displayLirics(lastEvent);
-                    }
+                    processEvent(xhr.responseText);
                 } else if (xhr.readyState === XMLHttpRequest.DONE) {
                     // Reconnect if the connection is closed
                     reconnectTimer.start();
@@ -79,7 +61,29 @@ PlasmoidItem {
             xhr.send();
         }
 
-        function displayLirics(lastEvent) {
+        function processEvent(responseText) {
+            // Process the received data
+            var newText = responseText.substring(lastProcessedIndex);
+            var events = newText.split("\n\n");
+
+            // Parse and handle each new event
+            // the reason i < events.length - 1 is because the last event may be "" 
+            // if the server hasn't finished sending it yet.
+            for (var i = 0; i < events.length - 1; i++) {
+                var event = events[i];
+                // Check if songs switched
+                // to avoid the bug displaying lyrics of last song when switching to pure songs
+                if (event.startsWith("event: name")) {
+                    lyricsLabel.text = "";
+                } else {
+                    displayLirics(event);
+                }
+            }
+
+            lastProcessedIndex = responseText.lastIndexOf("\n\n") + 2;
+        }
+
+        function displayLirics(event) {
             // API example
             // event: lyricLineAllText
             // data: "可愛い子可愛い子\n可爱的孩子啊\nka wa i i ko ka wa i i ko"
@@ -95,7 +99,7 @@ PlasmoidItem {
             // Translation: 1
             // Romanization: 2
             // None: 3
-            var data = lastEvent.split("\n")[1];
+            var data = event.split("\n")[1];
             var allLyrics = data.substring(7, data.length - 1).split("\\n");
             var lyrics = "";
             if (allLyrics[cfg_lang1]) {
